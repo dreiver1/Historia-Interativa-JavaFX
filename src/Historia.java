@@ -2,18 +2,14 @@ import java.util.Scanner;
 
 public class Historia{
     private Capitulo inicio;
-    private int contador = 0;
 
-    public static void main(String[] args) throws InterruptedException {
-        
-    }
 
-    public void inciar() throws InterruptedException{
+    public void executar() throws InterruptedException{
         Capitulo aux = this.inicio;
-        ler(aux);
+        escolher(aux);
     }
 
-    private void ler(Capitulo capitulo) throws InterruptedException {
+    private void escolher(Capitulo capitulo) throws InterruptedException {
         Scanner scanner = new Scanner(System.in);
         System.out.println(capitulo.getTitulo());
         System.out.println(" ");
@@ -40,7 +36,7 @@ public class Historia{
             System.out.print("\033[H\033[2J");
             System.out.flush();
             Capitulo aux = capitulo.getEscolha01();
-            ler(aux);
+            escolher(aux);
         } else if (escolha == 2) {
             System.out.print("\033[H\033[2J");
             System.out.flush();
@@ -49,23 +45,12 @@ public class Historia{
             System.out.print("\033[H\033[2J");
             System.out.flush();
             Capitulo aux = capitulo.getEscolha02();
-            ler(aux);
+            escolher(aux);
         }
-    }
-
-    public Capitulo getInicio() {
-        return inicio;
     }
 
     public void setInicio(Capitulo inicio) {
         this.inicio = inicio;
     }
 
-    public int getContador() {
-        return contador;
-    }
-
-    public void setContador(int contador) {
-        this.contador = contador;
-    }
 }

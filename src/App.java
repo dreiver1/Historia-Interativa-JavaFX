@@ -24,6 +24,6 @@ public class App {
         capitulo1.setEscolha01(primeiraCapt01);
         capitulo1.setEscolha02(segundaCapt01);
         tesouro.setInicio(capitulo1);
-        tesouro.inciar();
+        tesouro.executar();
     }
 }
