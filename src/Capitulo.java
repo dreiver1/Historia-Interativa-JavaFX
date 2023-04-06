@@ -3,14 +3,23 @@ public class Capitulo {
     private String contexto;
     private Capitulo escolha01;
     private Capitulo escolha02;
-    private Boolean fim = false;
+    private Boolean perdeSaude = false;
+    private Boolean morre = false;
 
-    public Boolean getFim() {
-        return fim;
+    public Boolean getMorre() {
+        return morre;
     }
 
-    public void setFim() {
-        this.fim = true;
+    public void setMorre() {
+        this.morre = true;
+    }
+
+    public Boolean getperdeperdeSaude() {
+        return this.perdeSaude;
+    }
+
+    public void setperdeperdeSaude() {
+        this.perdeSaude = true;
     }
 
     public Capitulo(String titulo, String contexto) {
@@ -48,5 +57,11 @@ public class Capitulo {
 
     public void setEscolha02(Capitulo escolha02) {
         this.escolha02 = escolha02;
+    }
+
+    @Override
+    public String toString() {
+        return "Capitulo [titulo=" + titulo + ", contexto=" + contexto + ", escolha01=" + escolha01 + ", escolha02="
+                + escolha02 + ", perdeSaude=" + perdeSaude + "]";
     }
 }
