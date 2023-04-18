@@ -17,22 +17,25 @@ public class Historia{
     public void executar() throws InterruptedException, IOException{
         System.out.print("\033[H\033[2J");
         restaurarEstado();
-        System.out.println("saude personagem: " + this.personagem.getSaude() + "\n");
-        Capitulo aux = this.inicio;
-        escolher(aux);
-        
+        escolher(this.inicio);    
     }
 
     private void escolher(Capitulo capitulo) throws InterruptedException, IOException {
+        System.out.print("\033[H\033[2J");
         Scanner scanner = new Scanner(System.in);
         System.out.println(capitulo.getTitulo() + '\n');
         System.out.println(capitulo.getContexto() + '\n');
+
+
 
         if(capitulo.getperdeperdeSaude() == true){
             this.personagem.perdeSaude();
         }
 
         System.out.println("saude personagem: " + this.personagem.getSaude() + "\n");
+
+        
+
         if(capitulo.getMorre() == true){
             scanner.close();
             return ;
@@ -45,8 +48,8 @@ public class Historia{
         }
 
         System.out.println(
-            capitulo.getEscolha01().getTitulo() + "\n" + 
-            capitulo.getEscolha02().getTitulo() + "\n" + 
+            "Opção 01: " + capitulo.getEscolha01().getTitulo() + "\n" + 
+            "Opção 02: " + capitulo.getEscolha02().getTitulo() + "\n" + 
             "Digite sua opção ou 0 para sair e salvar"
             );
 
@@ -100,16 +103,15 @@ public class Historia{
 
     public void recuperarHistoria() throws IOException{
         File historia = new File("src/assets/historia.json");
-        if(!historia.exists()){
-            historia.createNewFile();
+        if(historia.exists()){
+            FileReader historiaJson = new FileReader(historia);
+            Gson gson = new Gson();
+            JsonReader jsonRD = new JsonReader(historiaJson);
+            Historia aux = gson.fromJson(jsonRD, Historia.class);
+            this.estado = aux.estado;
+            this.inicio = aux.inicio;
+            this.personagem = aux.personagem;
         }
-        FileReader historiaJson = new FileReader(historia);
-        Gson gson = new Gson();
-        JsonReader jsonRD = new JsonReader(historiaJson);
-        Historia aux = gson.fromJson(jsonRD, Historia.class);
-        this.estado = aux.estado;
-        this.inicio = aux.inicio;
-        this.personagem = aux.personagem;
     }
     
     private void salvarEstado(Capitulo capitulo) throws IOException {
@@ -135,9 +137,8 @@ public class Historia{
             System.out.println("Progresso encontrado: Desejá continuar de onde parou? \n S/n: ");
             String opcao = scanner.nextLine();
             System.out.println(opcao);
-            if(opcao == "S" || opcao == "s"){
-                FileReader arquivo;
-                arquivo = new FileReader(estado);
+            if(opcao.equals("s") || opcao.equals("s")){
+                FileReader arquivo = new FileReader(estado);
                 JsonReader json = new JsonReader(arquivo);
                 Gson gson = new Gson();
                 this.estado = gson.fromJson(json, State.class);
@@ -145,6 +146,7 @@ public class Historia{
                 this.personagem.setSaude(this.estado.getSaudeAtual());
                 this.personagem.recuperaSaude();
                 this.personagem.setNome(this.estado.getNome());
+                return;
             }else{
                 estado.delete();
             }
