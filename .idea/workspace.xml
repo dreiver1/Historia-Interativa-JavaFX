@@ -5,30 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d78180f7-33ea-447a-b828-9ae491ddc39d" name="Changes" comment="Adicionando projeto para javaFX e transferindo responsabilidades para classe controller.">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/historiainterativap2/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/historiainterativap2/AppController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/historiainterativap2/Capitulo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/historiainterativap2/Historia.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/historiainterativap2/Personagem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/historiainterativap2/State.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/historiainterativap2/assets/capitulos.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/historiainterativap2/assets/capitulos01.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/historiainterativap2/assets/estado.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/historiainterativap2/assets/historia.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/historiainterativap2/assets/projeto.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/historiainterativap2/assets/projeto01.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/historiainterativap2/aux.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/historiainterativap2/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/historiainterativap2/AppController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,6 +107,14 @@
       <option name="presentableId" value="Default" />
       <updated>1681898032762</updated>
     </task>
+    <task id="LOCAL-00001" summary="Adicionando projeto para javaFX e transferindo responsabilidades para classe controller.">
+      <created>1681911729286</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1681911729286</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

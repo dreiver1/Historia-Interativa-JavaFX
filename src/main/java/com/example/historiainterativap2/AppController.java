@@ -1,17 +1,39 @@
 package com.example.historiainterativap2;
 
 import com.google.gson.Gson;
-import com.google.gson.stream.JsonReader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.image.ImageView;
 
-import java.io.*;
-import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class AppController {
+    public Capitulo getAtual() {
+        return atual;
+    }
+
+    @FXML
+    private ImageView capituloImagem;
+
+
+    @FXML
+    private Button continuar;
+
+    @FXML
+    private Button salvar;
+
+    public void setAtual(Capitulo atual) {
+        this.atual = atual;
+    }
+
+    Capitulo atual;
+
 
     Historia historia;
 
@@ -47,6 +69,8 @@ public class AppController {
         escolha02.setVisible(true);
         this.titulo.setText("titulo do capitulo");
         this.executar();
+        continuar.setVisible(false);
+        salvar.setVisible(true);
         //a cada iteracao alterar o titulo da sena e as escolhas
         //a cada iteracao exibir o contexto do capitulo dentro da textArea
 
@@ -62,7 +86,6 @@ public class AppController {
     }
 
     private void escolher(Capitulo capitulo) throws InterruptedException, IOException {
-        Scanner scanner = new Scanner(System.in);
         titulo.setText(capitulo.getTitulo());
         escolha01.setText(capitulo.getEscolha01().getTitulo());
         escolha02.setText(capitulo.getEscolha02().getTitulo());
@@ -72,53 +95,8 @@ public class AppController {
             historia.getPersonagem().perdeSaude();
         }
 
-        //System.out.println("saude getPersonagem(): " + historia.getPersonagem().getSaude() + "\n");
-
-//        if(capitulo.getMorre() == true){
-//            scanner.close();
-//            return ;
-//        }
-
-//        if(historia.getPersonagem().getSaude() <= 0){
-//            System.out.println("saude getPersonagem(): " + historia.getPersonagem().getSaude() + "\n");
-//            scanner.close();
-//            return ;
-//        }
-
-//        System.out.println(
-//                "Opção 01: " + capitulo.getEscolha01().getTitulo() + "\n" +
-//                        "Opção 02: " + capitulo.getEscolha02().getTitulo() + "\n" +
-//                        "Digite sua opção ou 0 para sair e salvar"
-//        );
-
-        int escolha = scanner.nextInt();
-
-        if(escolha == 0){
-            salvarEstado(capitulo);
-            scanner.close();
-            return;
-        }
-
-        if (escolha == 1) {
-            System.out.print("\033[H\033[2J");
-            System.out.flush();
-            System.out.println("...");
-            Thread.sleep(1000);
-            System.out.print("\033[H\033[2J");
-            System.out.flush();
-            Capitulo aux = capitulo.getEscolha01();
-            escolher(aux);
-        } else if (escolha == 2) {
-            System.out.print("\033[H\033[2J");
-            System.out.flush();
-            System.out.println("...");
-            Thread.sleep(1000);
-            System.out.print("\033[H\033[2J");
-            System.out.flush();
-            Capitulo aux = capitulo.getEscolha02();
-            escolher(aux);
-        }
-        scanner.close();
+        setAtual(capitulo);
+        // to doo proxima escolha
     }
 
     private void salvarEstado(Capitulo capitulo) throws IOException {
@@ -139,24 +117,33 @@ public class AppController {
 
     private void restaurarEstado() throws FileNotFoundException {
         File estado = new File("src/assets/estado.json");
-        if(estado.exists()){
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Progresso encontrado: Desejá continuar de onde parou? \n S/n: ");
-            String opcao = scanner.nextLine();
-            System.out.println(opcao);
-            if(opcao.equals("s") || opcao.equals("s")){
-                FileReader arquivo = new FileReader(estado);
-                JsonReader json = new JsonReader(arquivo);
-                Gson gson = new Gson();
-                historia.setEstado(gson.fromJson(json, State.class));
-                historia.setInicio(historia.getEstado().getCapituloAtual());
-                historia.getPersonagem().setSaude(historia.getEstado().getSaudeAtual());
-                historia.getPersonagem().recuperaSaude();
-                historia.getPersonagem().setNome(historia.getEstado().getNome());
-                return;
-            }else{
-                estado.delete();
-            }
-        }
+        //to do restaurar estado
+//        if(estado.exists()){
+//            System.out.println("Progresso encontrado: Desejá continuar de onde parou? \n S/n: ");
+//            System.out.println(opcao);
+//            if(opcao.equals("s") || opcao.equals("s")){
+//                FileReader arquivo = new FileReader(estado);
+//                JsonReader json = new JsonReader(arquivo);
+//                Gson gson = new Gson();
+//                historia.setEstado(gson.fromJson(json, State.class));
+//                historia.setInicio(historia.getEstado().getCapituloAtual());
+//                historia.getPersonagem().setSaude(historia.getEstado().getSaudeAtual());
+//                historia.getPersonagem().recuperaSaude();
+//                historia.getPersonagem().setNome(historia.getEstado().getNome());
+//                return;
+//            }else{
+//                estado.delete();
+//            }
+//        }
+    }
+
+    @FXML
+    void restaurarProgresso(ActionEvent event) {
+
+    }
+
+    @FXML
+    void salvarProgress(ActionEvent event) {
+
     }
 }
