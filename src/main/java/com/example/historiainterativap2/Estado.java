@@ -1,6 +1,6 @@
 package com.example.historiainterativap2;
 
-public class State {
+public class Estado {
     private Capitulo capituloAtual;
     private int saudeAtual;
     private String nome;
@@ -22,5 +22,9 @@ public class State {
     }
     public void setNome(String nome) {
         this.nome = nome;
+    }
+    @Override
+    public String toString() {
+        return "State [capituloAtual=" + capituloAtual + ", saudeAtual=" + saudeAtual + ", nome=" + nome + "]";
     }
 }

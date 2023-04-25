@@ -12,6 +12,7 @@ public class App extends Application {
         launch(args);
     }
 
+
     @Override
     public void start(Stage stage) throws IOException {
         Historia historia = new Historia();
@@ -20,6 +21,7 @@ public class App extends Application {
         Scene scene = new Scene(loader.load());
         AppController appController = loader.getController();
         appController.setHistoria(historia);
+        appController.carregarEstado();
         stage.setTitle("Historia interativa!");
         stage.setScene(scene);
         stage.show();

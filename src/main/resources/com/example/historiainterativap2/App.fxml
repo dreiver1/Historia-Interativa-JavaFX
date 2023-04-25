@@ -39,7 +39,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="408.0" prefWidth="742.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.historiainterativap2.AppController">
    <children>
       <Label fx:id="titulo" layoutX="223.0" layoutY="33.0" text="Historia Interativa">
@@ -49,12 +48,12 @@
       </Label>
       <TextArea fx:id="content" layoutX="36.0" layoutY="83.0" prefHeight="186.0" prefWidth="384.0" wrapText="true" />
       <Button fx:id="inciar" layoutX="228.0" layoutY="335.0" mnemonicParsing="false" onAction="#iniciar" prefHeight="27.0" prefWidth="79.0" text="Iniciar" />
-      <Button fx:id="escolha02" layoutX="419.0" layoutY="336.0" mnemonicParsing="false" onAction="#escolha02" text="iniciar" visible="false" />
-      <Button fx:id="escolha01" layoutX="40.0" layoutY="335.0" mnemonicParsing="false" onAction="#escolha01" text="iniciar" visible="false" />
+      <Button fx:id="escolha02" layoutX="419.0" layoutY="336.0" mnemonicParsing="false" onAction="#escolha02" visible="false" />
+      <Button fx:id="escolha01" layoutX="40.0" layoutY="335.0" mnemonicParsing="false" onAction="#escolha01" visible="false" />
       <Button fx:id="salvar" layoutX="257.0" layoutY="336.0" mnemonicParsing="false" onAction="#salvarProgress" text="Salvar progresso" visible="false" />
-      <Label layoutX="36.0" layoutY="296.0" text="SAUDE: 30" />
-      <Label layoutX="134.0" layoutY="296.0" text="ENERGIA: 30" />
+      <Label fx:id="saude" layoutX="36.0" layoutY="296.0" text="SAUDE: 30" />
       <ImageView fx:id="capituloImagem" fitHeight="163.0" fitWidth="200.0" layoutX="426.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="continuar" layoutX="368.0" layoutY="335.0" mnemonicParsing="false" onAction="#restaurarProgresso" text="Continuar" />
+      <Button fx:id="continuar" layoutX="368.0" layoutY="335.0" mnemonicParsing="false" onAction="#restaurarProgresso" text="Continuar" visible="false" />
+      <Button fx:id="Sair" layoutX="328.0" layoutY="334.0" mnemonicParsing="false" onAction="#sair" prefHeight="27.0" prefWidth="79.0" text="Sair" visible="false" />
    </children>
 </AnchorPane>

@@ -1,5 +1,6 @@
 package com.example.historiainterativap2;
 
+
 public class Personagem {
     private String nome;
     private int saude = 30;
@@ -14,7 +15,11 @@ public class Personagem {
         this.nome = nome;
     }
     public int getSaude() {
-        return saude;
+        return this.saude;
+    }
+
+    public String getSaudeString() {
+        return String.format("Saude: %s", saude);
     }
 
     public void perdeSaude() {
