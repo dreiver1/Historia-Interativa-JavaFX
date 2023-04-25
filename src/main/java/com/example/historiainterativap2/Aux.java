@@ -8,7 +8,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.stream.JsonWriter;
 
-public class aux {
+public class Aux {
     public static void main(String[] args) {
         Gson gson = new Gson();
         JsonArray capitulos = new JsonArray();

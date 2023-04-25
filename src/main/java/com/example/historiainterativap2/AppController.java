@@ -32,9 +32,9 @@ public class AppController {
     this.atual = atual;
   }
 
-  Capitulo atual;
+  private Capitulo atual;
 
-  Historia historia;
+  private Historia historia;
 
   @FXML
   private Label titulo;
