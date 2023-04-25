@@ -1,0 +1,9 @@
+ .text-top{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+
+ .text-top{
+    font-size: 30px;
+ }
