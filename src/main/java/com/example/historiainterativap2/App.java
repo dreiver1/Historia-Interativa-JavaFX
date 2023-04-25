@@ -8,15 +8,13 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class App extends Application {
-    private Historia historia;
-
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void start(Stage stage) throws IOException {
-        historia = new Historia();
+        Historia historia = new Historia();
         historia.recuperarHistoria();
         FXMLLoader loader = new FXMLLoader(App.class.getResource("App.fxml"));
         Scene scene = new Scene(loader.load());

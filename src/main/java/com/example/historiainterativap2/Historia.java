@@ -34,13 +34,13 @@ public class Historia {
     private Capitulo inicio;
     private State estado;
 
+    /**
+     * Desserializa a classe historia e salva os dados em um arquivo json.
+     **/
     public void salvarHistoria(){
         try {
             Gson gson = new Gson();
             File arquivo = new File("src/main/java/com/example/historiainterativap2/assets/historia.json");
-            if(!arquivo.exists()){
-                arquivo.createNewFile();
-            }
             FileWriter fileWriter = new FileWriter(arquivo);
             Historia aux = this;
             String json = gson.toJson(aux);
@@ -48,10 +48,12 @@ public class Historia {
             fileWriter.close();
             return ;
         } catch (IOException e) {
-            System.out.println(e);
+            System.out.println(e.toString());
         }
     }
-
+    /**
+     * serializa a classe historia e instacia nela mesma.
+     * **/
     public void recuperarHistoria() throws IOException{
         File historia = new File("src/main/java/com/example/historiainterativap2/assets/historia.json");
         if(historia.exists()){
@@ -69,6 +71,10 @@ public class Historia {
         this.inicio = inicio;
     }
 
+
+    /**
+     * Constroi uma historia atravez de uma arvore percorrida em pré-ordem armazenada em uma lista.
+     * **/
     public void buildArvoreHistoria(JsonArray a){
         Gson gson = new Gson();
         if(this.inicio == null){

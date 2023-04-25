@@ -54,12 +54,14 @@ public class AppController {
 
     @FXML
     void escolha01(ActionEvent event) {
-
+      setAtual(getAtual().getEscolha01());
+      atualizaInterface(getAtual());
     }
 
     @FXML
     void escolha02(ActionEvent event) {
-
+      setAtual(this.atual.getEscolha02());
+      atualizaInterface(getAtual());
     }
     @FXML
     void iniciar(ActionEvent event) throws IOException, InterruptedException {
@@ -71,9 +73,6 @@ public class AppController {
         this.executar();
         continuar.setVisible(false);
         salvar.setVisible(true);
-        //a cada iteracao alterar o titulo da sena e as escolhas
-        //a cada iteracao exibir o contexto do capitulo dentro da textArea
-
     }
 
     public void setHistoria(Historia historia) {
@@ -84,27 +83,31 @@ public class AppController {
         restaurarEstado();
         escolher(historia.getInicio());
     }
+    /**
+     * A partir das informações de um capitulo recarrega todas as informações da interface.
+     * **/
+    private void atualizaInterface(Capitulo capitulo){
+      titulo.setText(capitulo.getTitulo());
+      escolha01.setText(capitulo.getEscolha01().getTitulo());
+      escolha02.setText(capitulo.getEscolha02().getTitulo());
+      content.setText(capitulo.getContexto());
+    }
 
     private void escolher(Capitulo capitulo) throws InterruptedException, IOException {
-        titulo.setText(capitulo.getTitulo());
-        escolha01.setText(capitulo.getEscolha01().getTitulo());
-        escolha02.setText(capitulo.getEscolha02().getTitulo());
-        content.setText(capitulo.getContexto());
-
-        if(capitulo.getperdeperdeSaude() == true){
+        atualizaInterface(capitulo);
+        if(capitulo.getperdeperdeSaude()){
             historia.getPersonagem().perdeSaude();
         }
 
         setAtual(capitulo);
         // to doo proxima escolha
     }
-
+    /**
+     * Salva todas informações atuais em um arquivo Json para ser recuperado posteriormente.
+     * **/
     private void salvarEstado(Capitulo capitulo) throws IOException {
         Gson gson = new Gson();
         File arquivo = new File("src/assets/estado.json");
-        if(!arquivo.exists()){
-            arquivo.createNewFile();
-        }
         historia.setEstado(new State());
         historia.getEstado().setSaudeAtual(historia.getPersonagem().getSaude());
         historia.getEstado().setNome(historia.getPersonagem().getNome());
@@ -143,7 +146,7 @@ public class AppController {
     }
 
     @FXML
-    void salvarProgress(ActionEvent event) {
-
+    void salvarProgress(ActionEvent event) throws IOException {
+      salvarEstado(this.getAtual());
     }
 }
